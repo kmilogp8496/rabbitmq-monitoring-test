@@ -1,0 +1,17 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: 'node-exporter'
+    static_configs:
+      - targets: ['node-exporter:9100']
+
+  - job_name: 'rabbitmq'
+    static_configs:
+      - targets:
+        - 'rabbitmq1:15692'  # RabbitMQ Prometheus metrics endpoint
+        - 'rabbitmq2:15692'
+        - 'rabbitmq3:15692'
+    metrics_path: /metrics
+
